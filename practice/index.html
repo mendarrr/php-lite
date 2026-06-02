@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>User Registration</h2>
+      <p>Please complete the following form to register with our site:</p>
+      <form action="registration.php" method="POST">
+        <label>User Name:</label>
+        <input
+          type="text"
+          name="username"
+          required
+          minlength="3"
+          placeholder="Enter username"
+        />
+
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          required
+          minlength="6"
+          placeholder="Enter password"
+        />
+
+        <div class="radio-group">
+          <label>Gender:</label>
+          <input type="radio" name="gender" value="Male" required /> Male
+          <input type="radio" name="gender" value="Female" /> Female
+        </div>
+
+        <label>How did you hear about us?</label>
+        <select name="hearaboutus" required>
+          <option value="">Select answer</option>
+          <option value="Friend">Friend</option>
+          <option value="Internet">Internet</option>
+          <option value="Advertisement">Advertisement</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <div class="checkbox-group">
+          <input type="checkbox" name="mailinglist" value="yes" />
+          Please select this box if you wish to be added to our mailing list. We
+          will not pass on your details to any third party.
+        </div>
+
+        <input type="submit" value="Register now" />
+      </form>
+    </div>
+  </body>
+</html>
