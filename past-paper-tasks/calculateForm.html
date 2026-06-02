@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Widget Order Form</title>
+    <link rel="stylesheet" href="calc-style.css" />
+  </head>
+  <body>
+    <div class="calc-container">
+      <h2>Widget Order Form</h2>
+      <p>
+        Indicate the quantity you wish to order. The total for your order will be
+        calculated automatically when you submit the form.
+      </p>
+
+      <form id="orderForm" onsubmit="return CalculateTotal(event)">
+        <label for="quantity">Send Me</label>
+        <input type="number" id="quantity" name="quantity" value="3" min="0" />
+
+        <div class="price-line">
+          Widgets at KSh <span class="price">25</span> each = Total:
+          <input type="text" id="total" name="total" value="75" readonly />
+        </div>
+
+        <input type="submit" value="Order Now" />
+      </form>
+    </div>
+
+    <script>
+      function CalculateTotal(e) {
+        if (e) e.preventDefault();
+        var qtyEl = document.getElementById('quantity');
+        var totalEl = document.getElementById('total');
+        var quantity = parseFloat(qtyEl.value);
+        if (isNaN(quantity) || quantity < 0) {
+          quantity = 0;
+          qtyEl.value = 0;
+        }
+        var pricePerWidget = 25;
+        var total = quantity * pricePerWidget;
+        // ensure integer if whole number, otherwise show two decimals
+        totalEl.value = Number.isInteger(total) ? total : total.toFixed(2);
+        return false; // keep on page for demo; return true to allow submission
+      }
+    </script>
+  </body>
+</html>
